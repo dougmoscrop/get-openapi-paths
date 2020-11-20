@@ -8,7 +8,7 @@ Supports:
 - koa/router
 - express
 - connect (routes only, no methods)
-- fastify (must use fastify-routes plugin)
+- fastify
 
 Does not support:
 

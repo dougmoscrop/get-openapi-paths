@@ -1,15 +1,13 @@
 'use strict';
 
+// has to be required first to facilitate require-in-the-middle
+const info = require('..');
+
 const test = require('ava');
 const fastify = require('fastify');
-const fastifyRoutes = require('fastify-routes');
-
-const info = require('..');
 
 test('get /', async t => {
     const app = fastify();
- 
-    app.register(fastifyRoutes);
 
     app.get('/', Function.prototype);
 
@@ -24,8 +22,6 @@ test('get /', async t => {
 
 test('get /:id', async t => {
     const app = fastify();
- 
-    app.register(fastifyRoutes);
 
     app.get('/:id', Function.prototype);
 
@@ -40,8 +36,6 @@ test('get /:id', async t => {
 
 test('get / put /:id', async t => {
     const app = fastify();
- 
-    app.register(fastifyRoutes);
 
     app.get('/:id', Function.prototype);
     app.put('/:id', Function.prototype);
@@ -58,8 +52,6 @@ test('get / put /:id', async t => {
 
 test('prefix', async t => {
     const app = fastify();
- 
-    app.register(fastifyRoutes);
 
     app.register((instance, opts, next) => {
         instance.get('/',  Function.prototype);
