@@ -2,9 +2,9 @@
 
 const { posix } = require('path');
 const afterRequire = require('require-in-the-middle');
-const fastifyRoutes = require('fastify-routes');
 
 afterRequire(['fastify'], function (exports) {
+    const fastifyRoutes = require('fastify-routes');
     function wrapped() {
         const app = exports.apply(exports, arguments);
         app.register(fastifyRoutes);
