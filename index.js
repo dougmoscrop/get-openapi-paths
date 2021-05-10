@@ -1,20 +1,6 @@
 'use strict';
 
 const { posix } = require('path');
-const afterRequire = require('require-in-the-middle');
-
-afterRequire(['fastify'], function (exports) {
-    const fastifyRoutes = require('fastify-routes');
-    function wrapped() {
-        const app = exports.apply(exports, arguments);
-        app.register(fastifyRoutes);
-        return app;
-    }
-    // match https://github.com/fastify/fastify/blob/master/fastify.js#L643
-    wrapped.fastify = wrapped;
-    wrapped.default = wrapped;
-    return wrapped;
-});
 
 const methods = new Set([
     'get',
@@ -26,11 +12,7 @@ const methods = new Set([
     'options'
 ]);
 
-module.exports = async function info(app) {
-    if (typeof app.listen === 'function') {
-        await app.listen();
-    }
-
+module.exports = function info(app) {
     const paths = {};
 
     function regexception(regexp) {
@@ -128,20 +110,6 @@ module.exports = async function info(app) {
     expressVisit(app._router);
     koaVisit(app);
     connectVisit(app);
-
-    // fastify
-    if (app.routes && app.routes instanceof Map) {
-        for (const [_, entry] of app.routes) {
-            Object.values(entry).forEach(route => {
-                const { method, url } = route;
-                addRoute(method, url);
-            });
-        }
-    }
-
-    if (typeof app.close === 'function') {
-        await app.close();
-    }
 
     return paths;
 };

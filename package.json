@@ -1,24 +1,21 @@
 {
   "name": "get-openapi-paths",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Produces a best-effort list of paths in OpenAPI format from various web frameworks",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "c8 --all ava"
   },
   "author": "Doug Moscrop",
   "license": "MIT",
   "devDependencies": {
     "@koa/router": "^10.0.0",
     "ava": "^3.13.0",
+    "c8": "^7.7.2",
     "connect": "^3.7.0",
     "express": "^4.17.1",
-    "fastify": "^3.8.0",
     "koa": "^2.13.0",
     "koa-router": "^10.0.0"
   },
-  "dependencies": {
-    "fastify-routes": "^3.0.1",
-    "require-in-the-middle": "^5.0.3"
-  }
+  "dependencies": {}
 }
