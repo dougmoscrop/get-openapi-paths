@@ -1,6 +1,6 @@
 {
   "name": "get-openapi-paths",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Produces a best-effort list of paths in OpenAPI format from various web frameworks",
   "main": "index.js",
   "scripts": {
