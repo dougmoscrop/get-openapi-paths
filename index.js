@@ -41,7 +41,7 @@ module.exports = function info(app) {
         const pathWithoutSlash = p.length > 1 && p.endsWith('/')
             ? p.slice(0, -1)
             : p;
-        const pathWithParams = pathWithoutSlash.replace(/:([a-z_]+)/g, '{$1}');
+        const pathWithParams = pathWithoutSlash.replace(/:([a-zA-Z_]+)/g, '{$1}');
 
         paths[pathWithParams] = paths[pathWithParams] || {};
 

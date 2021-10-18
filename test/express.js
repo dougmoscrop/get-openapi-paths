@@ -33,6 +33,20 @@ test('get /:id', async t => {
   });
 });
 
+test('get /:quoteID', async t => {
+  const app = express();
+
+  app.get('/:quoteID', Function.prototype);
+
+  const paths = await info(app);
+
+  t.deepEqual(paths, {
+    '/{quoteID}': {
+      get: {},
+    }
+  });
+});
+
 test('nested paths', async t => {
   const app = express();
 
