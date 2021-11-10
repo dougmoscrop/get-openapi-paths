@@ -33,7 +33,7 @@ module.exports = function info(app) {
     function pathify(paths, p) {
         return p === '/'
             ? posix.join(...paths)
-            : posix.join(...paths, p);
+            : posix.join(paths[paths.length - 1], p);
     }
 
     function addRoute(m, p) {
